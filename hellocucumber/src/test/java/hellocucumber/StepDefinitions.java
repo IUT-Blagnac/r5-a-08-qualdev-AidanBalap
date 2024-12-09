@@ -20,6 +20,11 @@ public class StepDefinitions {
 
     private String today;
 
+    @Given("today is anything else!")
+    public void today_is_anything_else() {
+        this.today = "Monday";
+    }
+
     @Given("today is Sunday")
     public void today_is_sunday() {
         this.today = "Sunday";
@@ -37,6 +42,16 @@ public class StepDefinitions {
     @Then("I should be told {string}")
     public void i_should_be_told(String string) {
         assertEquals(string, IsItFriday.isItFriday(this.today));
+    }
+
+    @Then("I should be told Yes sir!")
+    public void i_should_be_told_yes_sir() {
+        assertEquals(IsItFriday.isItFriday(this.today), "Yes sir!");
+    }
+
+    @Then("I should be told Nope")
+    public void i_should_be_told_nope() {
+        assertEquals(IsItFriday.isItFriday(this.today), "Nope");
     }
 }
 

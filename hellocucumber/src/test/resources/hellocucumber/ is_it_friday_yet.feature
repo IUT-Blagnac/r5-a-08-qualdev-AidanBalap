@@ -1,11 +1,12 @@
 Feature: Check if today's Friday
 
-    Scenario: Sunday isn't Friday
-        Given today is Sunday
+    Scenario: Check if <day> is Friday
+        Given today is <day>
         When I ask whether it's Friday yet
-        Then I should be told "Nope"
+        Then I should be told <answer>
 
-    Scenario: Friday is Friday
-        Given today is Friday
-        When I ask whether it's Friday yet
-        Then I should be told "Yes sir!"
+        Examples:
+            | day            | answer   |
+            | Friday         | Yes sir! |
+            | Sunday         | Nope     |
+            | anything else! | Nope     |
