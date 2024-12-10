@@ -1,17 +1,13 @@
 Feature: The language of the website can be changed
 
-    Scenario: Check if the website is available in English
-        When I visit the URL "https://aidanbalap.dev/en"
-        Then the language should be "en"
+    Scenario Outline: Check if the website is available in English
+        When I visit the URL "<url>"
+        Then the language should be "<lang>"
 
-    Scenario: Check if the website is available in French
-        When I visit the URL "https://aidanbalap.dev/fr"
-        Then the language should be "fr"
-
-    Scenario: Check if the website is available in Spanish
-        When I visit the URL "https://aidanbalap.dev/es"
-        Then the language should be "es"
-
-    Scenario: Check the default language of the website
-        When I visit the URL "https://aidanbalap.dev/random-url"
-        Then the language should be "en"
+        Examples:
+            | url                               | lang |
+            | https://aidanbalap.dev            | en   |
+            | https://aidanbalap.dev/en         | en   |
+            | https://aidanbalap.dev/fr         | fr   |
+            | https://aidanbalap.dev/es         | es   |
+            | https://aidanbalap.dev/random-url | en   |
