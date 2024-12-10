@@ -66,4 +66,54 @@ image::./docs/tp2-test-results.png[width=80%]
 
 == TP3
 
-## TODO
+Pour ce TP, mon idée était de tester la disponibilité de mon porfolio web en différentes langues. J'ai utilisé Javascript pour cela.
+
+.tp3_web-status-check/features/language-change.feature
++
+.tp3_web-status-check/features/portfolio-check.feature
+```Gherkin
+Feature: The web status check
+
+    Scenario: Check the portfolio web status
+        When I visit the URL "https://aidanbalap.dev"
+        Then the status should be "200"
+
+
+Feature: The language of the website can be changed
+
+    Scenario Outline: Check if the website is available in English
+        When I visit the URL "<url>"
+        Then the language should be "<lang>"
+
+        Examples:
+            | url                               | lang |
+            | https://aidanbalap.dev            | en   |
+            | https://aidanbalap.dev/en         | en   |
+            | https://aidanbalap.dev/fr         | fr   |
+            | https://aidanbalap.dev/es         | es   |
+            | https://aidanbalap.dev/random-url | en   |
+
+```
+
+
+.tp3_web-status-check/features/steps/check.js
+et
+.tp3_web-status-check/features/steps/language.js
+
+```javascript
+When("I visit the URL {string}", async function (url) {
+  this.response = await axios.get(url);
+});
+
+Then("the status should be {string}", function (expectedStatus) {
+  assert.strictEqual(this.response.status.toString(), expectedStatus);
+});
+
+Then("the language should be {string}", function (string) {
+  const lang = this.response.data.match(/<html lang="(\w{2})">/)[1];
+  assert.strictEqual(lang, string);
+});
+
+```
+
+image::./docs/tp3-test-results.png[width=80%]
