@@ -27,4 +27,13 @@ public class CocktailSteps {
         assertEquals(nbCocktails, cocktails.size());
     }
 
+    @When("a message saying {string} is added")
+    public void a_message_saying_is_added(String string) {
+        order.addMessage(string);
+    }
+
+    @Then("the ticket must say {string}")
+    public void the_ticket_must_say(String string) {
+        assertEquals(string, order.getMessage());
+    }
 }

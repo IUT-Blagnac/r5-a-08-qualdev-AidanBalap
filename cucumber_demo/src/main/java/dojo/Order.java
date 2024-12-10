@@ -6,6 +6,7 @@ import java.util.List;
 public class Order {
     private String orderAuthor;
     private String orderTarget;
+    private String message;
     private ArrayList<String> cocktailsOrdered = new ArrayList<String>();
 
     public void declareOwner(String orderAuthor) {
@@ -18,5 +19,13 @@ public class Order {
 
     public List<String> getCocktails() {
         return cocktailsOrdered;
+    }
+
+    public void addMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return "From " + orderAuthor + " to " + orderTarget + ": " + message;
     }
 }
