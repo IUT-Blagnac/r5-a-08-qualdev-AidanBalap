@@ -117,3 +117,14 @@ Then("the language should be {string}", function (string) {
 ```
 
 image::./docs/tp3-test-results.png[width=80%]
+
+
+== TP4
+
+Rapport généré automatiquement par Cukedoctor
+
+-> hellocucumber/documentation.html[Rapport de test]
+
+Exécution du projet Serenity BDD
+
+image::./docs/tp4-test-results.png[width=80%]
